@@ -60,7 +60,7 @@ jq --argjson pubKey "$PUB_KEY" '.consensus["validators"]=[{"address": "'$ADDRESS
 echo "DA_BLOCK_HEIGHT=$DA_BLOCK_HEIGHT" >> restart-wasmd.sh
 echo "AUTH_TOKEN=$AUTH_TOKEN" >> restart-wasmd.sh
 
-echo "wasmd start --rollkit.aggregator --rollkit.da_auth_token=\$AUTH_TOKEN --rollkit.da_namespace 00000000000000000000000000000000000000000008e5f679bf7116cb --rollkit.da_start_height \$DA_BLOCK_HEIGHT --rpc.laddr tcp://0.0.0.0:36657 --grpc.address 0.0.0.0:9290 --p2p.laddr \"0.0.0.0:36656\" --minimum-gas-prices=\"0.025urosm\" --rollkit.da_gas_multiplier 1.2 --rollkit.block_time 10s" >> restart-wasmd.sh
+echo "wasmd start --rollkit.aggregator --rollkit.da_address http://localhost:7980 --rpc.laddr tcp://0.0.0.0:36657 --grpc.address 0.0.0.0:9290 --p2p.laddr \"0.0.0.0:36656\" --minimum-gas-prices=\"0.025urosm\" --rollkit.block_time 200ms" >> restart-wasmd.sh
 
 # start the chain
-wasmd start --rollkit.aggregator --rollkit.da_auth_token=$AUTH_TOKEN --rollkit.da_namespace 00000000000000000000000000000000000000000008e5f679bf7116cb --rollkit.da_start_height $DA_BLOCK_HEIGHT --rpc.laddr tcp://0.0.0.0:36657 --grpc.address 0.0.0.0:9290 --p2p.laddr "0.0.0.0:36656" --minimum-gas-prices="0.025urosm" --rollkit.da_gas_multiplier 1.2 --rollkit.block_time 10s
+wasmd start --rollkit.aggregator --rollkit.da_address http://localhost:7980 --rpc.laddr tcp://0.0.0.0:36657 --grpc.address 0.0.0.0:9290 --p2p.laddr "0.0.0.0:36656" --minimum-gas-prices="0.025urosm" --rollkit.block_time 200ms
